@@ -1,0 +1,3 @@
+[submodule "lib/fu-sharp"]
+	path = lib/fu-sharp
+	url = git://github.com/chakrit/fu-sharp.git
