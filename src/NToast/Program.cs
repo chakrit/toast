@@ -1,10 +1,20 @@
 ﻿
+using System;
+using System.Diagnostics;
+
 namespace NToast
 {
-  public class Program
+  internal class Program
   {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
+      var listener = new TextWriterTraceListener(Console.Out);
+      Trace.Listeners.Add(listener);
+
+      var settings = ToastSettings.LoadDefault();
+      var app = new NToastApp(settings);
+
+      app.Start();
     }
   }
 }

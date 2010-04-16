@@ -2,21 +2,18 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C86D2F68-A141-4371-AC04-CABD5446BC91}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{F30A100D-443D-47D5-949C-1DD117EBDB2A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NToast</RootNamespace>
-    <AssemblyName>NToast</AssemblyName>
+    <RootNamespace>NToast.Web</RootNamespace>
+    <AssemblyName>NToast.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,8 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\build\</OutputPath>
@@ -37,6 +33,9 @@
   <ItemGroup>
     <Reference Include="Autofac">
       <HintPath>..\..\lib\Autofac\Library\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="NHaml">
+      <HintPath>..\..\lib\fu-sharp\lib\NHaml\NHaml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,9 +50,14 @@
     <Compile Include="..\NToastAssemblyInfo.cs">
       <Link>Properties\NToastAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="CoreModule.cs" />
-    <Compile Include="NToastApp.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Controllers\Homepage.cs" />
+    <Compile Include="ISession.cs" />
+    <Compile Include="ToastController.cs" />
+    <Compile Include="ToastPage.cs" />
+    <Compile Include="ToastTemplate.cs" />
+    <Compile Include="Tokens\Token.cs" />
+    <Compile Include="Urls.cs" />
+    <Compile Include="WebModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\MobileCollector\lib\fu-sharp\src\Fu.Services.Sessions.Redis\Fu.Services.Sessions.Redis.csproj">
@@ -76,10 +80,32 @@
       <Project>{8A9053BE-2D6E-4912-9022-184C82188F18}</Project>
       <Name>NToast.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NToast.Web\NToast.Web.csproj">
-      <Project>{F30A100D-443D-47D5-949C-1DD117EBDB2A}</Project>
-      <Name>NToast.Web</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\css\blueprint\grid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\blueprint\ie.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\blueprint\print.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\blueprint\screen.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\haml\Home.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\Home.Main.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
