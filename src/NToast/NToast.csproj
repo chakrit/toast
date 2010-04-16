@@ -76,6 +76,10 @@
       <Project>{8A9053BE-2D6E-4912-9022-184C82188F18}</Project>
       <Name>NToast.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NToast.Data\NToast.Data.csproj">
+      <Project>{C24853CD-57AC-4620-A23C-83DD9C974B75}</Project>
+      <Name>NToast.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NToast.Web\NToast.Web.csproj">
       <Project>{F30A100D-443D-47D5-949C-1DD117EBDB2A}</Project>
       <Name>NToast.Web</Name>

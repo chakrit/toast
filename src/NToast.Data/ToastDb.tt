@@ -1,0 +1,31 @@
+﻿<#@ template language="C#" hostspecific="true" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#
+
+  const string SQLMetalPath =
+    @"C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\SqlMetal.exe";
+
+  
+  var dbPath = Host.ResolvePath("ToastDb.sdf");
+
+  var tempPath = Path.GetTempFileName();
+  var startInfo = new ProcessStartInfo {
+    FileName = SQLMetalPath,
+    Arguments = string.Format("/pluralize /code:\"{0}\" \"{1}\"", tempPath, dbPath),
+    CreateNoWindow = true,
+  };
+
+  var proc = Process.Start(startInfo);
+  proc.WaitForExit();
+
+  var result = File.ReadAllText(tempPath);
+  File.Delete(tempPath);
+  
+#>
+
+namespace NToast.Data {
+
+<#= result #>
+
+}

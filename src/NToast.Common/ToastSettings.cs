@@ -18,6 +18,8 @@ namespace NToast
 
     public string Host = "localhost";
     public long Port = 80;
+
+    public string DbConnectionString = "Data Source=ToastDb.sdf;Persist Security Info=False";
   }
 
 
