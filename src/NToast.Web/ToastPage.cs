@@ -31,6 +31,8 @@ namespace NToast.Web
         yield return _pageName + ".haml";
         yield return _pageName.Substring(0, _pageName.IndexOf('.')) + ".haml";
       }
+
+      yield return "Master.haml";
     }
 
 

@@ -51,10 +51,28 @@
       <Link>Properties\NToastAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Controllers\Homepage.cs" />
+    <Compile Include="Controllers\Setup.cs" />
     <Compile Include="ISession.cs" />
     <Compile Include="ToastController.cs" />
     <Compile Include="ToastPage.cs" />
+    <Content Include="Content\haml\Setup.Done.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\Setup.First.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Controllers\Content.cs" />
+    <None Include="ToastPages.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ToastPages.cs</LastGenOutput>
+    </None>
+    <Compile Include="ToastPages.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToastPages.tt</DependentUpon>
+    </Compile>
     <Compile Include="ToastTemplate.cs" />
+    <Compile Include="Tokens\SetupToken.cs" />
     <Compile Include="Tokens\Token.cs" />
     <Compile Include="Urls.cs" />
     <Compile Include="WebModule.cs" />
@@ -81,7 +99,14 @@
       <Name>NToast.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\haml\Master.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\Setup.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\blueprint\grid.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -106,6 +131,9 @@
     <Content Include="Content\haml\Home.Main.haml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

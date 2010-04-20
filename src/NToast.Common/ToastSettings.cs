@@ -10,16 +10,19 @@ namespace NToast
   {
     public Version Version = Assembly.GetEntryAssembly().GetName().Version;
 
+    public string Host = "localhost";
+    public long Port = 80;
+
+    public string DbConnectionString = "Data Source=ToastDb.sdf;Persist Security Info=False";
+
+    public bool FirstRun = true;
+
+
 #if DEBUG
     public bool DebugMode = true;
 #else
     public bool DebugMode = false;
 #endif
-
-    public string Host = "localhost";
-    public long Port = 80;
-
-    public string DbConnectionString = "Data Source=ToastDb.sdf;Persist Security Info=False";
   }
 
 

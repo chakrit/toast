@@ -33,7 +33,7 @@ namespace NToast
     {
       var modules = new Module[] {
         new CoreModule(_settings),
-        new WebModule(),
+        new WebModule(_settings),
       };
 
       var builder = new ContainerBuilder();

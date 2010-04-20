@@ -12,12 +12,9 @@ namespace NToast
       Trace.Listeners.Add(listener);
 
       var settings = ToastSettings.LoadDefault();
-      //var app = new NToastApp(settings);
+      var app = new NToastApp(settings);
 
-      //app.Start();
-
-      var dbMan = new NToast.Data.DbManager(settings);
-      dbMan.CreateDatabase();
+      app.Start();
     }
   }
 }

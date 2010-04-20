@@ -7,6 +7,9 @@ namespace NToast.Web
 {
   public abstract class ToastController : FuController
   {
+    public ToastSettings Settings { get; set; }
+
+
     protected override void Handle(string urlRegex, params Continuation[] steps)
     {
       // if no ^ and $ supplied, assumes we want to match entire Urls

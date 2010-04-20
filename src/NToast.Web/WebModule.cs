@@ -15,21 +15,49 @@ using Fu.Steps;
 using NHaml;
 using NHaml.TemplateResolution;
 
+using NToast.Web.Controllers;
+
 using Token = NToast.Web.Tokens.Token;
 
 namespace NToast.Web
 {
   public class WebModule : Module
   {
+    private ToastSettings _settings;
+
+    public WebModule(ToastSettings settings)
+    {
+      _settings = settings;
+    }
+
+
     protected override void Load(ContainerBuilder b)
     {
       base.Load(b);
 
-      // register all controllers
-      b.RegisterAssemblyTypes(typeof(ToastController).Assembly)
-        .AssignableTo<ToastController>()
-        .As<IFuController>()
-        .SingleInstance();
+      // only use the setup controller at first run
+      if (_settings.FirstRun) {
+        b.RegisterType<Setup>()
+          .As<IFuController>()
+          .SingleInstance()
+          .PropertiesAutowired();
+
+        // also include all static contents (CSS/JS etc.)
+        b.RegisterType<Content>()
+          .As<IFuController>()
+          .SingleInstance()
+          .PropertiesAutowired();
+
+      }
+      else {
+        // register all controllers except the setup controllers
+        b.RegisterAssemblyTypes(typeof(ToastController).Assembly)
+          .AssignableTo<ToastController>()
+          .Where(t => t != typeof(Setup))
+          .As<IFuController>()
+          .SingleInstance()
+          .PropertiesAutowired();
+      }
 
 
       // create a modelbinder for all token types
