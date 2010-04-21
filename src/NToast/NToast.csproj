@@ -56,19 +56,7 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MobileCollector\lib\fu-sharp\src\Fu.Services.Sessions.Redis\Fu.Services.Sessions.Redis.csproj">
-      <Project>{59B63611-66D7-4929-94DF-FE943D0CD017}</Project>
-      <Name>Fu.Services.Sessions.Redis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\MobileCollector\lib\fu-sharp\src\Fu.Templates.NHaml\Fu.Templates.NHaml.csproj">
-      <Project>{188DD43D-DB98-46A6-919A-1CECEBA5210F}</Project>
-      <Name>Fu.Templates.NHaml</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\MobileCollector\lib\fu-sharp\src\Fu.Web\Fu.Web.csproj">
-      <Project>{23EF40C1-1B6C-424F-BBEA-CBDE3434AD8C}</Project>
-      <Name>Fu.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\MobileCollector\lib\fu-sharp\src\Fu\Fu.csproj">
+    <ProjectReference Include="..\..\lib\fu-sharp\src\Fu\Fu.csproj">
       <Project>{1583A6C9-45DA-46B4-9DBD-B86461DB893B}</Project>
       <Name>Fu</Name>
     </ProjectReference>

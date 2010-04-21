@@ -1,35 +1,31 @@
 ﻿
+using System;
+
 using Fu;
-using Fu.Results;
 using Fu.Steps;
 
 namespace NToast.Web
 {
-  public abstract class ToastController : FuController
+  public abstract class ToastController : RestStyleController
   {
+    protected bool EnableHttpCompression { get; set; }
+
+
     public ToastSettings Settings { get; set; }
 
-
-    protected override void Handle(string urlRegex, params Continuation[] steps)
+    public ToastController()
     {
-      // if no ^ and $ supplied, assumes we want to match entire Urls
-      // so we automatically adds ^ and $ to prevents partial matches
-      if (!urlRegex.StartsWith("^") && !urlRegex.EndsWith("$"))
-        urlRegex = "^" + urlRegex + "$";
-
-      // adds a Result.Render() step
-      var step = fu
-        .Compose(steps)
-        .Then(fu.Result.Render(true));
-
-      base.Handle(urlRegex, step);
+      EnableHttpCompression = true;
     }
 
-    // we frequently used the Results framework, so we're providing
-    // overload here for convenience
-    protected void Handle(string urlRegex, Reduce<IResult> resultStep)
+
+    protected override void Map(string url,
+      Func<Continuation, Continuation, Continuation> wrapper,
+      Continuation handler)
     {
-      Handle(urlRegex, fu.Results(resultStep));
+      handler = handler.Then(fu.Result.Render(EnableHttpCompression));
+
+      base.Map(url, wrapper, handler);
     }
   }
 }

@@ -9,7 +9,7 @@ namespace NToast.Web.Controllers
     // TODO: Add CSS minification
     public override void Initialize()
     {
-      Handle("/css/(.*)", fu.Static.Folder("/css/", "Content/css"));
+      Get(Urls.CssFolder + "(.+)", fu.Static.Folder(Urls.CssFolder, "Content/css"));
     }
   }
 }
