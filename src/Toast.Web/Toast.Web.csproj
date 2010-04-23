@@ -62,6 +62,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Controllers\Content.cs" />
+    <Content Include="Content\haml\Setup.Restart.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\_Messages.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\js\jquery-1.4.1.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ToastPages.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ToastPages.cs</LastGenOutput>
@@ -72,6 +81,7 @@
       <DependentUpon>ToastPages.tt</DependentUpon>
     </Compile>
     <Compile Include="ToastTemplate.cs" />
+    <Compile Include="Tokens\Messages.cs" />
     <Compile Include="Tokens\SetupToken.cs" />
     <Compile Include="Tokens\Token.cs" />
     <Compile Include="Urls.cs" />
@@ -93,6 +103,10 @@
     <ProjectReference Include="..\Toast.Common\Toast.Common.csproj">
       <Project>{8A9053BE-2D6E-4912-9022-184C82188F18}</Project>
       <Name>Toast.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toast.Data\Toast.Data.csproj">
+      <Project>{C24853CD-57AC-4620-A23C-83DD9C974B75}</Project>
+      <Name>Toast.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

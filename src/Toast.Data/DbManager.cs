@@ -22,6 +22,15 @@ namespace Toast.Data
     }
 
 
+    public void CheckAndSetup()
+    {
+      // TODO: Check the schema version and call upgrade methods
+      //       if necessary
+      if (!DatabaseExists())
+        CreateDatabase();
+    }
+
+
     public Version GetDbSchemaVersion()
     {
       using (var ctx = NewContext()) {

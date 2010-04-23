@@ -10,6 +10,7 @@ using Fu.Services;
 using Fu.Services.Models;
 using Fu.Services.Sessions;
 using Fu.Services.Templating;
+using Fu.Services.Web;
 using Fu.Steps;
 
 using NHaml;
@@ -48,6 +49,11 @@ namespace Toast.Web
           .SingleInstance()
           .PropertiesAutowired();
 
+        // and a model binder for settings
+        b.RegisterType<ModelBinder<ToastSettings>>()
+          .As<IService>()
+          .SingleInstance();
+
       }
       else {
         // register all controllers except the setup controllers
@@ -76,6 +82,11 @@ namespace Toast.Web
         b.RegisterType(t).As<IService>().SingleInstance());
 
 
+      // misc. required web services
+      b.RegisterType<FormDataParser>().As<IService>().SingleInstance();
+      b.RegisterType<MultipartFormDataParser>().As<IService>().SingleInstance();
+
+
       // templating services
       b.Register(c => buildTemplateOptions(c))
         .As<TemplateOptions>()
@@ -92,10 +103,10 @@ namespace Toast.Web
         .SingleInstance();
 
 
-      // uses memory-based sessions, for now we can upgrade
+      // uses memory-based sessions, for now. we can upgrade
       // to a DB-backed or Redis-backed session store later
       // however, that might run counter to the goal of Toast
-      // which is maximum simplicity
+      // which is maximum simplicity, I don't think we need that
       b.RegisterType<InMemorySessionService<ISession>>()
         .As<IService>()
         .SingleInstance();

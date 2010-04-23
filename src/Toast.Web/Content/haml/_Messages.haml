@@ -1,0 +1,7 @@
+﻿- if (!string.IsNullOrEmpty(Messages.Success)) {
+  %div.success= Messages.Success
+- } else if (Messages.Errors != null && Messages.Errors.Length > 0) {
+  %ul.errors
+  - foreach (var err in Messages.Errors)
+    %li= err
+- }

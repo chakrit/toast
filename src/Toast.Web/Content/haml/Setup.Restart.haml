@@ -1,0 +1,17 @@
+﻿%div.notice
+  Please wait while the server restarts...
+  %br
+  In a minute, you will be able to start using Toast! :)
+%script{ type="text/javascript" }
+  $(function() {
+    function pingServer() {
+      setTimeout(pingServer, 500);
+
+      $.getJSON("/ping", {}, function(obj) {
+        if (obj && obj['ok'])
+          document.location = '/';
+      });
+    }
+
+    setTimeout(pingServer, 3000);
+  });

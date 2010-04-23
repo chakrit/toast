@@ -4,6 +4,8 @@ using System;
 using Fu;
 using Fu.Steps;
 
+using Toast.Data;
+
 namespace Toast.Web
 {
   public abstract class ToastController : RestStyleController
@@ -12,6 +14,8 @@ namespace Toast.Web
 
 
     public ToastSettings Settings { get; set; }
+    public ToastEvents Events { get; set; }
+    public IDbManager Db { get; set; }
 
     public ToastController()
     {

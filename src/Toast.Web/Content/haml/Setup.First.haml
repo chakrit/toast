@@ -1,1 +1,14 @@
-﻿%p Hello WOrld!
+﻿%form{ action="#{Urls.SetupHome}" method="POST" }
+  %fieldset
+    _ Messages
+    %p
+      %label{ for="Host" } Host:
+      %input.text{ type="text" name="Host" value="#{Token.Settings.Host}" }
+    %p
+      %label{ for="Port" } Port:
+      %input.text{ type="text" name="Port" value="#{Token.Settings.Port}" }
+    %p
+      %label{ for="DbConnectionString" } Database connection string:
+      %input.text{ type="text" name="DbConnectionString" value="#{Token.Settings.DbConnectionString}" }
+    %p
+      %input.submit{ type="submit" value="Save" }

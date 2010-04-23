@@ -16,6 +16,7 @@ namespace Toast
     protected override void Load(ContainerBuilder b)
     {
       b.RegisterInstance(_settings);
+      b.RegisterInstance(new ToastEvents());
     }
   }
 }

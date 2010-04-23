@@ -31,13 +31,19 @@ namespace Toast
     public const string DefaultFilename = "settings.json";
 
 
-    void SaveTo(string filename)
+    public void SaveTo(string filename)
     {
       var serializer = new JavaScriptSerializer();
       var result = serializer.Serialize(this);
 
       File.WriteAllText(filename, result);
     }
+
+    public void SaveDefault()
+    {
+      SaveTo(DefaultFilename);
+    }
+
 
     public static ToastSettings LoadFrom(string filename)
     {

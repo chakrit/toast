@@ -45,6 +45,7 @@
     <Compile Include="..\ToastAssemblyInfo.cs">
       <Link>Properties\ToastAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ToastEvents.cs" />
     <Compile Include="ToastSettings.cs" />
   </ItemGroup>
   <ItemGroup />

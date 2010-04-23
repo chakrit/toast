@@ -1,1 +1,17 @@
-﻿%div
+﻿%div.notice
+  %p Clicking the Restart button will commit the settings to disk and automatically |
+    restart Toast. You can change these settings later by editing the `settings.json` |
+    file in the Toast directory.
+%form{ action="#{Urls.SetupCommit}" method="POST" }
+  %fieldset
+    %p
+      %label{ for="Host" } Host:
+      %input.text{ type="text" name="Host" value="#{Token.Settings.Host}" readonly="readonly" }
+    %p
+      %label{ for="Port" } Port:
+      %input.text{ type="text" name="Port" value="#{Token.Settings.Port}" readonly="readonly" }
+    %p
+      %label{ for="DbConnectionString" } Database connection string:
+      %input.text{ type="text" name="DbConnectionString" value="#{Token.Settings.DbConnectionString}" readonly="readonly" }
+    %p
+      %input.submit{ type="submit" value="Restart" }

@@ -7,6 +7,7 @@ namespace Toast.Web
 {
   public abstract class ToastTemplate : HamlTemplateBase
   {
+    public Messages Messages { get; set; }
   }
 
   public abstract class ToastTemplate<T> : ToastTemplate

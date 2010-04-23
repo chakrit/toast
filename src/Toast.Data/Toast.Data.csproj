@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\lib\Autofac\Library\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -60,6 +63,7 @@
     <Compile Include="..\ToastAssemblyInfo.cs">
       <Link>Properties\ToastAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="DataModule.cs" />
     <Compile Include="DbManager.cs" />
     <Compile Include="IDbManager.cs" />
     <Compile Include="ToastDb.cs">

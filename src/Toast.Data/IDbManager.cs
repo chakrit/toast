@@ -9,6 +9,8 @@ namespace Toast.Data
     Version CurrentSchemaVersion { get; }
     Version GetDbSchemaVersion();
 
+    void CheckAndSetup();
+
     bool DatabaseExists();
     void CreateDatabase();
 
