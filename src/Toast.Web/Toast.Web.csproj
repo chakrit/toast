@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F30A100D-443D-47D5-949C-1DD117EBDB2A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Toast.Web</RootNamespace>
+    <AssemblyName>Toast.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\build\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\lib\Autofac\Library\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="NHaml">
+      <HintPath>..\..\lib\fu-sharp\lib\NHaml\NHaml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\ToastAssemblyInfo.cs">
+      <Link>Properties\NToastAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Controllers\Homepage.cs" />
+    <Compile Include="Controllers\Setup.cs" />
+    <Compile Include="ISession.cs" />
+    <Compile Include="ToastController.cs" />
+    <Compile Include="ToastPage.cs" />
+    <Content Include="Content\haml\Setup.Done.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\Setup.First.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Controllers\Content.cs" />
+    <None Include="ToastPages.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ToastPages.cs</LastGenOutput>
+    </None>
+    <Compile Include="ToastPages.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToastPages.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ToastTemplate.cs" />
+    <Compile Include="Tokens\SetupToken.cs" />
+    <Compile Include="Tokens\Token.cs" />
+    <Compile Include="Urls.cs" />
+    <Compile Include="WebModule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\lib\fu-sharp\src\Fu.Templates.NHaml\Fu.Templates.NHaml.csproj">
+      <Project>{188DD43D-DB98-46A6-919A-1CECEBA5210F}</Project>
+      <Name>Fu.Templates.NHaml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\lib\fu-sharp\src\Fu.Web\Fu.Web.csproj">
+      <Project>{23EF40C1-1B6C-424F-BBEA-CBDE3434AD8C}</Project>
+      <Name>Fu.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\lib\fu-sharp\src\Fu\Fu.csproj">
+      <Project>{1583A6C9-45DA-46B4-9DBD-B86461DB893B}</Project>
+      <Name>Fu</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toast.Common\Toast.Common.csproj">
+      <Project>{8A9053BE-2D6E-4912-9022-184C82188F18}</Project>
+      <Name>Toast.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\haml\Master.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\Setup.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\blueprint\grid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\blueprint\ie.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\blueprint\print.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\blueprint\screen.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\css\site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\haml\Home.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\haml\Home.Main.haml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
